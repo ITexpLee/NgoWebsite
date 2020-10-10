@@ -1,3 +1,7 @@
+body {
+    font-family: Sansita Swashed sans-serif;
+}
+
 /* Editing for Video Background */
 
 .section {
@@ -34,8 +38,18 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #ca1e1e;
-    opacity: 0.3;
+    background: linear-gradient(to right, maroon, black);
+    animation: overlay 2s linear 1s forwards;
+}
+
+@keyframes overlay {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
 }
 
 @media (min-aspect-ratio: 16/9) {
@@ -66,4 +80,185 @@
 #saveme {
     margin-top: 60vh;
     z-index: 1;
+}
+
+/* Button effect */
+
+.glow-on-hover {
+    width: 10vw;
+    height: 3vw;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    font-size: 1.4vw;
+    opacity: 0;
+    animation: buttoneffect 2s linear 3s;
+    animation-fill-mode: forwards;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@media only screen and (max-width: 786px) {
+
+    .glow-on-hover {
+        width: 20vw !important;
+        height: 6vw !important;
+        font-size: 2vw;
+    }
+}
+
+/* Pause and Play Button */
+
+.icon-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3vh;
+}
+
+@keyframes buttoneffect {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.icon {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 3vw;
+    height: 3vw;
+    margin-right: 1vw;
+    padding-left: 0.7vw;
+    border-radius: 4vw;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    animation: buttoneffect 2s linear 3s;
+    animation-fill-mode: forwards;
+}
+
+.icon::before,
+.icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-radius: 30px;
+}
+
+.icon i {
+    position: relative;
+    color: #fff;
+    font-size: 1.6vw;
+    margin-top: 1.7vh;
+    margin-left: 0.1vw;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.icon-enter::after {
+    box-shadow: inset 0 0 0 1px #EB9532;
+}
+
+.icon-enter::before {
+    border-radius: 0;
+    margin-left: -100%;
+    box-shadow: inset 0 0 0 60px #EB9532;
+}
+
+.icon-enter:hover::before {
+    margin-left: 0;
+}
+
+.icon-collapse::before {
+    border-radius: 0;
+}
+
+.icon-collapse:hover::before {
+    box-shadow: inset 0 30px 0 0 #8CC63F, inset 0 -30px 0 0 #8CC63F;
+}
+
+.icon-collapse::after {
+    box-shadow: inset 0 0 0 1px #8CC63F;
+}
+
+@media only screen and (max-width: 1000px) {
+    .icon i {
+        margin-top: 1vw;
+    }
+}
+
+@media only screen and (max-width: 786px) {
+    .icon {
+        display: none;
+    }
 }
