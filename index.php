@@ -20,15 +20,11 @@
 <body>
     <!-- Video Section -->
     <div class="section">
-        <div class="icon-container">
-            <div class="icon icon-enter"><i class="fa fa-pause"></i></div>
-            <div class="icon icon-collapse"><i class="fas fa-play"></i></div>
-        </div>
         <a class="btn glow-on-hover" href="#" id="saveme">Save Me :)</a>
         <!-- Video Container for Overlay -->
         <div class="video-container">
             <div class="color-overlay"></div>
-            <video id="videobg" poster="images/SavetheChildren.jpg" playsinline autoplay muted="false" loop>
+            <video id="videobg" poster="images/SavetheChildren.jpg" playsinline autoplay loop muted>
                 <source src="images/Save the Children.mp4" type="video/mp4">
                 <source src="images/Save the Children.webm" type="video/webm">
             </video>
@@ -45,7 +41,7 @@
     <!--Jquery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Developer script-->
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
 </body>
 
 </html>
