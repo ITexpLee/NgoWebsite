@@ -52,20 +52,6 @@ body {
     }
 }
 
-@media (min-aspect-ratio: 16/9) {
-    #videobg {
-        width: 100%;
-        height: auto;
-    }
-}
-
-@media (max-aspect-ratio: 16/9) {
-    #videobg {
-        width: auto;
-        height: 100%;
-    }
-}
-
 @media (max-width: 767px) {
     .video-container {
         display: none;
@@ -77,12 +63,12 @@ body {
     }
 }
 
+/* Button effect */
+
 #saveme {
     margin-top: 60vh;
     z-index: 1;
 }
-
-/* Button effect */
 
 .glow-on-hover {
     width: 10vw;
@@ -104,6 +90,7 @@ body {
 .glow-on-hover:before {
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: -moz-linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
     top: -2px;
     left: -2px;
@@ -163,17 +150,10 @@ body {
         height: 6vw !important;
         font-size: 2vw;
     }
-}
 
-/* Pause and Play Button */
-
-.icon-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 3vh;
+    .icon-container {
+        display: none;
+    }
 }
 
 @keyframes buttoneffect {
@@ -184,4 +164,84 @@ body {
     100% {
         opacity: 1;
     }
+}
+
+/* Pause and Play Button */
+
+.icon-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5vh;
+    z-index: 1;
+    opacity: 0;
+    animation: buttoneffect 2s linear 3s;
+    animation-fill-mode: forwards;
+}
+
+.icon {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 3vw;
+    height: 3vw;
+    margin-left: 0.8vw;
+    margin-right: 12px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.icon::before,
+.icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    border-radius: 2vw;
+}
+
+.icon i {
+    position: relative;
+    padding-left: 0.8vw;
+    color: #FFFFFF;
+    font-size: 1.6vw;
+    margin-top: 0.8vw;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+/* Pause Button */
+
+.icon-enter::after {
+    box-shadow: inset 0 0 0 1px #EB9532;
+}
+
+.icon-enter::before {
+    border-radius: 0;
+    margin-left: -100%;
+    box-shadow: inset 0 0 0 60px #EB9532;
+}
+
+.icon-enter:hover::before {
+    margin-left: 0;
+}
+
+/* Play Button */
+
+.icon-collapse::before {
+    border-radius: 0;
+}
+
+.icon-collapse:hover::before {
+    box-shadow: inset 0 30px 0 0 #8CC63F, inset 0 -30px 0 0 #8CC63F;
+}
+
+.icon-collapse::after {
+    box-shadow: inset 0 0 0 1px #8CC63F;
 }

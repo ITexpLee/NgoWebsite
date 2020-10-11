@@ -20,11 +20,15 @@
 <body>
     <!-- Video Section -->
     <div class="section">
-        <a class="btn glow-on-hover" href="#" id="saveme">Save Me :)</a>
+        <a class="btn glow-on-hover" href="homepage.php" id="saveme">Save Me :)</a>
+        <div class="icon-container">
+            <div class="icon icon-collapse" id="play" title="Play Music!"><i class="fas fa-play"></i></div>
+            <div class="icon icon-enter" id="pause" title="Pause Music!"><i class="fas fa-pause"></i></div>
+        </div>
         <!-- Video Container for Overlay -->
         <div class="video-container">
             <div class="color-overlay"></div>
-            <video id="videobg" poster="images/SavetheChildren.jpg" playsinline autoplay loop muted>
+            <video id="videobg" poster="images/SavetheChildren.jpg" playsinline muted autoplay loop>
                 <source src="images/Save the Children.mp4" type="video/mp4">
                 <source src="images/Save the Children.webm" type="video/webm">
             </video>
