@@ -1,3 +1,11 @@
+<?php
+
+include 'connection.php';
+
+require_once 'component.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +26,23 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-
+    <div class="container-fluid" id="homepagebg">
+        <div class="card-deck">
+            <?php
+            //Fetch Card Data
+            $sql = "SELECT * FROM products";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                echo "There was an error fetching it from Database";
+                exit();
+            }
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    card($row['id'], $row['ngo_name'], $row['about'], $row['ngo_image']);
+                }
+            }
+            ?>
+        </div>
     </div>
     <!--Script files-->
     <!--Bootstrap files-->
